@@ -16,10 +16,10 @@ export class AppComponent {
     sliderWidth: Number = 940;
     sliderImageWidth: Number = 250;
     sliderImageHeight: Number = 200;
-    sliderArrowShow: Boolean = true;
-    sliderInfinite: Boolean = false;
-    sliderImagePopup: Boolean = true;
-    sliderAutoSlide: Boolean = false;
+    sliderArrowShow: boolean = true;
+    sliderInfinite: boolean = false;
+    sliderImagePopup: boolean = true;
+    sliderAutoSlide: boolean = false;
     sliderSlideImage: Number = 1;
     sliderAnimationSpeed: any = 1;
     imageObject;
