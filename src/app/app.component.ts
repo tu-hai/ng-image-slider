@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
-import { NgImageSliderModule, NgImageSliderComponent } from 'ngx-img-slider';
+import { NgImageSliderComponent } from 'projects/ngx-img-slider/src/lib/ngx-img-slider.component';
 import { HeroService } from "./hero.service";
 
 @Component({
