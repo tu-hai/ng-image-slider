@@ -2,7 +2,7 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { NgImageSliderModule } from 'ngx-img-slider';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
