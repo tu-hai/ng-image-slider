@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
-import { NgImageSliderComponent } from 'projects/ngx-img-slider/src/lib/ngx-img-slider.component';
+import { Images } from 'projects/ng-image-slider/src/images.model';
+import { NgImageSliderComponent } from 'projects/ng-image-slider/src/public_api';
 import { HeroService } from "./hero.service";
 
 @Component({
@@ -22,7 +23,7 @@ export class AppComponent {
     sliderAutoSlide: boolean = false;
     sliderSlideImage: Number = 1;
     sliderAnimationSpeed: any = 1;
-    imageObject;
+    imageObject: Images[];
     slideOrderType: string = 'DESC';
 
     constructor(private heroService: HeroService) {
@@ -38,16 +39,17 @@ export class AppComponent {
     }
 
     setImageObject() {
-        // this.heroService.getImages().subscribe((data: any) => {
-        // setTimeout(() => {
-        //     this.imageObject = data;
-        // }, 3000);
-        // });
         this.imageObject = this.heroService.getImagesWithOrder();
     }
 
     imageOnClick(index) {
         console.log('index', index);
+    }
+    imageOnDownload(id: string) {
+        console.log('id', id);
+    }
+    imageOnDelete(id: string) {
+        console.log('id', id);
     }
 
     lightboxClose() {

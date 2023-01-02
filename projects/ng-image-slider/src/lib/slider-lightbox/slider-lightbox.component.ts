@@ -2,8 +2,6 @@ import {
     ChangeDetectorRef,
     Component,
     OnInit,
-    OnChanges,
-    SimpleChanges,
     Inject,
     AfterViewInit,
     OnDestroy,
@@ -17,7 +15,7 @@ import {
 import { DOCUMENT } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 
-const LIGHTBOX_NEXT_ARROW_CLICK_MESSAGE = 'lightbox next',	
+const LIGHTBOX_NEXT_ARROW_CLICK_MESSAGE = 'lightbox next',
     LIGHTBOX_PREV_ARROW_CLICK_MESSAGE = 'lightbox previous'
 
 @Component({

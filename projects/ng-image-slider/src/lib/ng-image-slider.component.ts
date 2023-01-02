@@ -20,23 +20,24 @@ import {
 } from '@angular/core';
 
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { NgImageSliderService } from './ngx-img-slider.service';
+import { NgImageSliderService } from './ng-image-slider.service';
+import { Images } from '../images.model';
 
 const NEXT_ARROW_CLICK_MESSAGE = 'next',
     PREV_ARROW_CLICK_MESSAGE = 'previous';
 
 @Component({
-    selector: 'ngx-img-slider',
-    templateUrl: './ngx-img-slider.component.html',
-    styleUrls: ['./ngx-img-slider.component.scss'],
+    selector: 'ng-image-slider',
+    templateUrl: './ng-image-slider.component.html',
+    styleUrls: ['./ng-image-slider.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class NgImageSliderComponent implements OnChanges, OnInit, DoCheck, AfterViewInit, OnDestroy {
     // for slider
     sliderMainDivWidth: number = 0;
     imageParentDivWidth: number = 0;
-    imageObj: Array<object> = [];
-    ligthboxImageObj: Array<object> = [];
+    imageObj: Images[] = [];
+    ligthboxImageObj: Images[]= [];
     totalImages: number = 0;
     leftPos: number = 0;
     effectStyle: string = 'all 1s ease-in-out';
@@ -55,15 +56,17 @@ export class NgImageSliderComponent implements OnChanges, OnInit, DoCheck, After
     showArrowButton: boolean = true;
     textDirection: string = 'ltr';
     imageMargin: number = 3;
-    sliderOrderType: string = 'ASC';
+    sliderOrderType:string ='ASC';
 
     // for swipe event
     private swipeCoord?: [number, number];
     private swipeTime?: number;
 
+
     // for lightbox
     ligthboxShow: boolean = false;
     activeImageIndex: number = -1;
+    hoverImageIndex: number = -1
     visiableImageIndex: number = 0;
 
     @ViewChild('sliderMain', { static: false }) sliderMain;
@@ -87,6 +90,7 @@ export class NgImageSliderComponent implements OnChanges, OnInit, DoCheck, After
         }
     }
     @Input() infinite: boolean = false;
+    @Input() showAction: boolean = false;
     @Input() imagePopup: boolean = true;
     @Input()
     set direction(dir: string) {
@@ -135,7 +139,7 @@ export class NgImageSliderComponent implements OnChanges, OnInit, DoCheck, After
         }
     }
 
-    @Input() set orderType(data: string) {
+    @Input() set orderType(data:string){
         if (data !== undefined && typeof data === 'string') {
             this.sliderOrderType = data.toUpperCase();
         }
@@ -157,6 +161,9 @@ export class NgImageSliderComponent implements OnChanges, OnInit, DoCheck, After
     @Output() arrowClick = new EventEmitter<object>();
     @Output() lightboxArrowClick = new EventEmitter<object>();
     @Output() lightboxClose = new EventEmitter<object>();
+    @Output() actionDownload= new EventEmitter<string>()
+    @Output() actionDelete= new EventEmitter<string>()
+
 
     @HostListener('window:resize', ['$event'])
     onResize(event) {
@@ -257,7 +264,7 @@ export class NgImageSliderComponent implements OnChanges, OnInit, DoCheck, After
                 }
             });
 
-            if (sliderOrderEnable) {
+            if(sliderOrderEnable){
                 imgObj = this.imageSliderService.orderArray(imgObj, this.sliderOrderType.toUpperCase());
             }
 
@@ -319,7 +326,8 @@ export class NgImageSliderComponent implements OnChanges, OnInit, DoCheck, After
         this.sliderImageSizeWithPadding = this.sliderImageWidth + (this.imageMargin * 2);
         this.imageParentDivWidth = this.imageObj.length * this.sliderImageSizeWithPadding;
         if (this.imageDiv && this.imageDiv.nativeElement && this.imageDiv.nativeElement.offsetWidth) {
-            this.leftPos = this.infinite ? -1 * this.sliderImageSizeWithPadding * this.slideImageCount : 0;
+            const staticLeftPos = 0-((this.sliderImageSizeWithPadding * this.visiableImageIndex) + (this.imageMargin*2))
+            this.leftPos = this.infinite ? -1 * this.sliderImageSizeWithPadding * this.slideImageCount : staticLeftPos;
         }
         this.nextPrevSliderButtonDisable();
     }
@@ -390,6 +398,17 @@ export class NgImageSliderComponent implements OnChanges, OnInit, DoCheck, After
         }
     }
 
+    downloadImg(id: string, event: Event) {
+      event.stopPropagation();
+      this.actionDownload.emit(id)
+
+    }
+
+    deleteImg(id: string, event: Event) {
+      event.stopPropagation();
+      this.actionDelete.emit(id)
+    }
+
     infinitePrevImg() {
         this.effectStyle = `all ${this.speed}s ease-in-out`;
         this.leftPos = 0;
@@ -452,7 +471,7 @@ export class NgImageSliderComponent implements OnChanges, OnInit, DoCheck, After
             actionMsg['nextDisable'] = this.sliderNextDisable;
         }
 
-        if (msg) {
+        if (msg){
             this.arrowClick.emit({
                 action: msg,
                 ...actionMsg
