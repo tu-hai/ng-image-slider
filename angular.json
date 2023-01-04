@@ -11,7 +11,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-image-slider",
+            "outputPath": "dist/ngx-img-slider",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
@@ -126,38 +126,38 @@
         }
       }
     },
-    "ng-image-slider": {
-      "root": "projects/ng-image-slider",
-      "sourceRoot": "projects/ng-image-slider/src",
+    "ngx-img-slider": {
+      "root": "projects/ngx-img-slider",
+      "sourceRoot": "projects/ngx-img-slider/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/ng-image-slider/tsconfig.lib.json",
-            "project": "projects/ng-image-slider/ng-package.json"
+            "tsConfig": "projects/ngx-img-slider/tsconfig.lib.json",
+            "project": "projects/ngx-img-slider/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/ng-image-slider/ng-package.prod.json"
+              "project": "projects/ngx-img-slider/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ng-image-slider/src/test.ts",
-            "tsConfig": "projects/ng-image-slider/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-image-slider/karma.conf.js"
+            "main": "projects/ngx-img-slider/src/test.ts",
+            "tsConfig": "projects/ngx-img-slider/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-img-slider/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ng-image-slider/tsconfig.lib.json",
-              "projects/ng-image-slider/tsconfig.spec.json"
+              "projects/ngx-img-slider/tsconfig.lib.json",
+              "projects/ngx-img-slider/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

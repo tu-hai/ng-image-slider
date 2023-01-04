@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
-import { Images } from 'projects/ng-image-slider/src/images.model';
-import { NgImageSliderComponent } from 'projects/ng-image-slider/src/public_api';
+import { Images } from 'projects/ngx-img-slider/src/images.model';
+import { NgxImgSliderComponent } from 'projects/ngx-img-slider/src/public_api';
 import { HeroService } from "./hero.service";
 
 @Component({
@@ -10,7 +10,7 @@ import { HeroService } from "./hero.service";
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-    @ViewChild('nav', { static: false }) ds: NgImageSliderComponent;
+    @ViewChild('nav', { static: false }) ds: NgxImgSliderComponent;
     title = 'Ng Image Slider';
     showSlider = true;
 

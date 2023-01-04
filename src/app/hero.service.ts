@@ -1,6 +1,6 @@
-import { Injectable, Inject, Optional } from "@angular/core";
+import { Injectable} from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Images } from "projects/ng-image-slider/src/images.model";
+import { Images } from "projects/ngx-img-slider/src/images.model";
 
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })

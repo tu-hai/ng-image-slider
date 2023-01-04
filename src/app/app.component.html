@@ -4,7 +4,7 @@
         Welcome to {{ title }}!
     </h1>
     <div class="margin-auto demo-div box-shadow" [ngStyle]="{'width':'100%'}">
-        <ng-image-slider #nav [images]="imageObject" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
+        <ngx-img-slider #nav [images]="imageObject" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
             [showArrow]="sliderArrowShow" [autoSlide]="sliderAutoSlide ? 1 : 0" [slideImage]="+sliderSlideImage"
             [animationSpeed]="sliderAnimationSpeed" [manageImageRatio]="false" [videoAutoPlay]="true"
             [showVideoControls]="true" [showAction]="true" [paginationShow]="false" [orderType]="slideOrderType"
@@ -14,7 +14,7 @@
              (arrowClick)="arrowOnClick($event)"
              (lightboxClose)="lightboxClose()"
              (actionDelete) ="imageOnClick($event)"
-            (lightboxArrowClick)="lightboxArrowClick($event)"></ng-image-slider>
+            (lightboxArrowClick)="lightboxArrowClick($event)"></ngx-img-slider>
     </div>
 
     <p class="demo-title-sub margin-auto">PLAY WITH IT!</p>

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { HeroService } from "./hero.service";
-import { NgImageSliderModule } from 'projects/ng-image-slider/src/public_api';
+import { NgxImgSliderModule } from 'projects/ngx-img-slider/src/public_api';
 
 @NgModule({
     declarations: [
@@ -14,7 +14,7 @@ import { NgImageSliderModule } from 'projects/ng-image-slider/src/public_api';
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        NgImageSliderModule
+        NgxImgSliderModule
     ],
     providers: [HeroService],
     bootstrap: [AppComponent]

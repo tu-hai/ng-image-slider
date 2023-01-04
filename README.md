@@ -15,20 +15,20 @@ Also support youtube and mp4 video urls.
   - Support Images (jpeg, jpg, gif, png and Base64-String), Youtube url and MP4 video (url and Base64-String)
   - Handling runtime image arraylist changes
 
-### Demo: https://sanjayv.github.io/ng-image-slider/
+### Demo: https://sanjayv.github.io/ngx-img-slider/
 ##### code example:
-##### Images: https://stackblitz.com/edit/ng-image-slider-demo
-##### video: https://stackblitz.com/edit/ng-image-slider-video-demo
+##### Images: https://stackblitz.com/edit/ngx-img-slider-demo
+##### video: https://stackblitz.com/edit/ngx-img-slider-video-demo
 
 
 # Installation
-`npm install ng-image-slider --save`
+`npm install ngx-img-slider --save`
 
 # Setup :
 
 **Import module in your `app.module.ts`:**
 ```typescript
-import { NgImageSliderModule } from 'ng-image-slider';
+import { NgImageSliderModule } from 'ngx-img-slider';
 ...
 
 @NgModule({
@@ -50,7 +50,7 @@ export class AppModule {
 
 **Add component in your template file.**
 ```html
-<ng-image-slider [images]="imageObject" #nav></ng-image-slider>
+<ngx-img-slider [images]="imageObject" #nav></ngx-img-slider>
 ```
 
 **ImageObject format**
@@ -127,13 +127,13 @@ For angular version 8 or less, use `"skipLibCheck": true` in `tsconfig.json` for
 
 ## Add custom navigation button
 ```typescript
-import { NgImageSliderComponent } from 'ng-image-slider';
+import { NgImageSliderComponent } from 'ngx-img-slider';
 
 @Component({
     selector: 'sample',
         template:`
-        <ng-image-slider [images]="imageObject" #nav>
-        </ng-image-slider>
+        <ngx-img-slider [images]="imageObject" #nav>
+        </ngx-img-slider>
         <button (click)="prevImageClick()">Prev</button>
         <button (click)="nextImageClick()">Next</button>
         `
