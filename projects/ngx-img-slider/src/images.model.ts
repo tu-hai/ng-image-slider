@@ -8,3 +8,4 @@ export interface Images {
   video?: any
   posterImage?: string
 }
+// test chuc nang 
